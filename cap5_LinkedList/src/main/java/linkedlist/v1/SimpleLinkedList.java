@@ -15,7 +15,7 @@ public class SimpleLinkedList<T> implements List<T> {
         clear();
     }
 
-    private boolean insertFirstNode(Nodo n) {
+    private boolean insertFirstNode(Nodo<T> n) {
         this.head = n;
         this.tail = n;
         this.size++;
@@ -81,30 +81,25 @@ public class SimpleLinkedList<T> implements List<T> {
         if (this.isEmpty())
             throw new NoSuchElementException();
 
-        T dato = getValue();
+        Nodo<T> oldCurr = getNode();  // guardar el valor del nodo a eliminar
 
         // remover el primer nodo
-        if (getNode() == head) {
-            head = getNode().siguiente;
+        if (oldCurr == head) {
+            head = head.siguiente;
         }
         else {
             // situarse justo antes de curr
             prev();
-            Nodo<T> previo = getNode();
+            Nodo<T> prevNodo = getNode();
+            prevNodo.siguiente = prevNodo.siguiente.siguiente;
 
             // remover el ultimo nodo
-            if (previo.siguiente == null) {
-                previo.siguiente = null;
-                tail = previo;
-                moveToEnd();  // evitar que curr sea un valor invalido
-            }
-            // remover nodos interiores
-            else {
-                previo.siguiente = previo.siguiente.siguiente;
+            if (oldCurr == tail) {
+                tail = prevNodo;
             }
         }
         size--;
-        return dato;
+        return oldCurr.getDato();
     }
 
     @Override
@@ -195,7 +190,7 @@ public class SimpleLinkedList<T> implements List<T> {
             return dato.toString();
         }
 
-        private T dato;
+        private final T dato;
         Nodo<T> siguiente;
     }
 }
