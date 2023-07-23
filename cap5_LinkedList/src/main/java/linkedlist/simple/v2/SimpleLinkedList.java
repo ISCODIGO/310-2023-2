@@ -10,7 +10,6 @@ función getNode para utilizar directamente curr.
 package linkedlist.simple.v2;
 
 import linkedlist.List;
-
 import java.util.NoSuchElementException;
 
 public class SimpleLinkedList<T> implements List<T> {
