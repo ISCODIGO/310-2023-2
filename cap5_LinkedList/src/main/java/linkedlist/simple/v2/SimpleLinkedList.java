@@ -41,10 +41,7 @@ public class SimpleLinkedList<T> implements List<T> {
 
     @Override
     public boolean insert(T it) {
-        /*
-        Algo particular de esta funcion es que no permite insertar al final
-        puede ser al inicio o enmedio pero no al final.
-         */
+        // Esta función no permite insertar al final puede ser al inicio o enmedio.
         var newNodo = new Nodo<>(it);
 
         // insertar primer nodo
@@ -173,7 +170,7 @@ public class SimpleLinkedList<T> implements List<T> {
         return size == 0;
     }
 
-    public class Nodo<T> {
+    public static class Nodo<T> {
         public T getDato() {
             return dato;
         }

@@ -1,6 +1,6 @@
-package linkedlist.v2;
+package linkedlist.simple.v1;
 
-import linkedlist.simple.v2.SimpleLinkedList;
+import linkedlist.simple.v1.SimpleLinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
