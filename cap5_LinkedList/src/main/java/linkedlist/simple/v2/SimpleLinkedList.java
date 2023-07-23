@@ -1,6 +1,16 @@
-package linkedlist.v1;
+/*
+
+El asunto de esta version es utilizar curr como una referencia de tipo Nodo en
+lugar de un entero que ubica las posiciones.
+
+Objetivo: Cambiar en las funciones existentes este rol. También se removió la
+función getNode para utilizar directamente curr.
+ */
+
+package linkedlist.simple.v2;
 
 import linkedlist.List;
+
 import java.util.NoSuchElementException;
 
 public class SimpleLinkedList<T> implements List<T> {
@@ -9,7 +19,7 @@ public class SimpleLinkedList<T> implements List<T> {
     private Nodo<T> tail;  // apunta al ultimo nodo
     private int size;  // cantidad de nodos
 
-    private int curr;  // posicion del nodo actual
+    private Nodo<T> curr;  // posición del nodo actual
 
     public SimpleLinkedList() {
         clear();
@@ -104,12 +114,12 @@ public class SimpleLinkedList<T> implements List<T> {
 
     @Override
     public void moveToStart() {
-        curr = 0;
+        curr = head;
     }
 
     @Override
     public void moveToEnd() {
-        curr = size - 1;
+        curr = tail;
     }
 
     @Override
@@ -147,7 +157,7 @@ public class SimpleLinkedList<T> implements List<T> {
 
     @Override
     public boolean isAtEnd() {
-        return curr == size - 1;
+        return curr == tail;
     }
 
     @Override
@@ -164,17 +174,6 @@ public class SimpleLinkedList<T> implements List<T> {
         return size == 0;
     }
 
-    private Nodo<T> getNode() {
-        if (this.isEmpty()) return  null;
-        Nodo<T> aux;
-        int pos = 0;
-
-        for (aux = head; aux != null; aux = aux.siguiente) {
-            if (pos == curr) break;
-            pos++;
-        }
-        return aux;
-    }
     public class Nodo<T> {
         public T getDato() {
             return dato;
