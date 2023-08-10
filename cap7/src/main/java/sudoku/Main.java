@@ -22,7 +22,6 @@ public class Main {
         System.out.println("Mapa original...");
         s.imprimir();
 
-
         System.out.println("\nMapa resuelto...");
         if (s.resolver()) {
             s.imprimir();
